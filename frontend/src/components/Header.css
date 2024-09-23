@@ -42,3 +42,20 @@
 .payment-mode-toggle .text-gray-500 {
   color: blue;
 }
+
+.toggle-button-active {
+  background-color: #007bff; /* Adjust color as needed */
+}
+
+.toggle-button-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* For a circular shape */
+  /* border-radius: 10px; // For an oval shape */
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-button-active .toggle-button-indicator {
+  transform: translateX(100%);
+}

@@ -1,0 +1,89 @@
+.additional-options-container {
+    margin-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.additional-options {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.option textarea {
+    width: 100%;
+    max-width: 200px;
+    height: 80px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.option input[type="text"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.option button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option button:hover {
+    background-color: #0056b3;
+}
+
+.option label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #333;
+}
+
+.option input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+.additional-options-container .total {
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.additional-options-container .round-off {
+    padding: 8px 16px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.additional-options-container .round-off input {
+    width: 60px;
+    margin-left: 10px;
+    text-align: right;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 4px;
+}

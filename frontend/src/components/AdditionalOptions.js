@@ -1,34 +1,26 @@
 import React from 'react';
+import './AdditionalOptions.css';
 
-const AdditionalOptions = ({ handleAddDescription, handleUploadImage, handleAddDocument, description, setDescription }) => {
+const AdditionalOptions = ({ roundOff, total }) => {
   return (
     <div className="additional-options-container">
       <div className="additional-options">
-        {/* Add Description */}
-        <div className="option">
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows="3"
-            placeholder="Add description"
-          />
-          <button onClick={handleAddDescription}>Add Description</button>
+        {/* Description Section */}
+        <div className="option description">
+          <label htmlFor="description">Description</label>
+          <textarea id="description" name="description" placeholder="Enter description here..."></textarea>
+        </div>
+        
+        {/* Pricing Section */}
+        <div className="option pricing">
+          <label htmlFor="pricing">Pricing</label>
+          <input type="text" id="pricing" name="pricing" placeholder="Enter pricing here..." />
         </div>
 
-        {/* Upload Image */}
-        <div className="option">
-          <label>
-            Upload Image
-            <input type="file" accept="image/*" onChange={handleUploadImage} style={{ display: 'none' }} />
-          </label>
-        </div>
-
-        {/* Add Document */}
-        <div className="option">
-          <label>
-            Add Document
-            <input type="file" onChange={handleAddDocument} style={{ display: 'none' }} />
-          </label>
+        {/* Additional Info */}
+        <div className="option additional-info">
+          <label htmlFor="additional-info">Additional Info</label>
+          <textarea id="additional-info" name="additional-info" placeholder="Enter any additional information here..."></textarea>
         </div>
       </div>
     </div>

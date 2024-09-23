@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CustomerSelection from '../components/CustomerSelection';
 import InvoiceDetails from '../components/InvoiceDetails';
 import ItemsEntry from '../components/ItemsEntry';
-import InvoiceSummary from '../components/InvoiceSummary';
 import AdditionalOptions from '../components/AdditionalOptions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Sales.css';
 
 const Sales = () => {
+  const navigate = useNavigate();
   const [customer, setCustomer] = useState('');
   const [phone, setPhone] = useState('');
   const [billingAddress, setBillingAddress] = useState('');
@@ -16,11 +17,23 @@ const Sales = () => {
   const [invoiceDate, setInvoiceDate] = useState('');
   const [stateOfSupply, setStateOfSupply] = useState('');
   const [items, setItems] = useState([{ item: '', qty: 0, unit: '', price: 0, discount: 0, tax: 0 }]);
-  const [roundOff, setRoundOff] = useState(false);
   const [total, setTotal] = useState(0);
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [document, setDocument] = useState(null);
+
+  const handleSaveAndClose = () => {
+    const invoiceData = {
+        customer,
+        phone,
+        billingAddress,
+        items,
+        total,
+    };
+    // Navigate to InvoicePreview and pass the data
+    navigate('/invoice', { state: { invoiceData } });
+};
+
 
   const handleAddRow = () => {
     setItems([...items, { item: '', qty: 0, unit: '', price: 0, discount: 0, tax: 0 }]);
@@ -28,14 +41,21 @@ const Sales = () => {
 
   const handleItemChange = (index, field, value) => {
     const newItems = [...items];
-    newItems[index][field] = value;
+    newItems[index][field] = field === 'price' ? parseFloat(value) || 0 : value; // Ensure price is a number
     setItems(newItems);
     calculateTotal(newItems);
-  };
+};
+
 
   const calculateTotal = (items) => {
-    const total = items.reduce((acc, item) => acc + item.price * item.qty - item.discount + item.tax, 0);
-    setTotal(total);
+    const total = items.reduce((acc, item) => {
+      const price = parseFloat(item.price) || 0;
+      const qty = parseFloat(item.qty) || 0;
+      const discount = parseFloat(item.discount) || 0;
+      const tax = parseFloat(item.tax) || 0;
+      return acc + (price * qty - discount + tax);
+    }, 0);
+    setTotal(total); // Set total as a number
   };
 
   const handleAddDescription = () => {
@@ -97,9 +117,32 @@ const Sales = () => {
           handleUploadImage={handleUploadImage}
           handleAddDocument={handleAddDocument}
         />
-        <InvoiceSummary total={total} roundOff={roundOff} setRoundOff={setRoundOff} />
+      
+        {/* Round Off Section */}
+        <div className="option round-off">
+          <label htmlFor="round-off">Round Off</label>
+          <input 
+            type="checkbox" 
+            id="round-off" 
+            name="round-off" 
+            checked={true} // Always checked for dummy data
+            readOnly // Prevent interaction
+          />
+          </div>
+        {/* Total Section */}
+        <div className="option total">
+          <label htmlFor="total">Total</label>
+          <input 
+            type="text" 
+            id="total" 
+            name="total" 
+            value={total.toFixed(2)} // total should always be a number
+            readOnly 
+            />
+        </div>
+      
       </div>
-      <Footer />
+      <Footer handleSave={handleSaveAndClose} />
     </div>
   );
 };
