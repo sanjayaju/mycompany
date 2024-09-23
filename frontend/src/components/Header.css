@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.header-title h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.divider {
+  font-size: 1.25rem;
+  color: #555; /* Optional color for the divider */
+}
+
+.payment-mode-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.payment-mode-toggle .text-sm {
+  font-size: 16px;
+}
+
+.payment-mode-toggle .text-gray-900 {
+  font-weight: bold;
+}
+
+.payment-mode-toggle .text-gray-500 {
+  color: blue;
+}

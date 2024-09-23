@@ -1,0 +1,42 @@
+/* src/components/Footer.css */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ddd;
+  }
+  
+  .footer-text {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .footer-buttons {
+    display: flex;
+    gap: 10px; /* Add space between the buttons */
+  }
+  
+  .footer-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .share-btn {
+    background-color: #4caf50; /* Green color for the Share button */
+    color: white;
+  }
+  
+  .save-btn {
+    background-color: #2196f3; /* Blue color for the Save button */
+    color: white;
+  }
+  
+  .footer-btn:hover {
+    opacity: 0.9; /* Slight hover effect */
+  }
+  

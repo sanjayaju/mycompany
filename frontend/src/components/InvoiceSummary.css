@@ -1,0 +1,22 @@
+.invoice-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .invoice-summary label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .invoice-summary input[type="checkbox"] {
+    margin-left: 5px;
+  }
+  
+  .invoice-summary div {
+    font-size: 16px;
+    font-weight: bold;
+  }
